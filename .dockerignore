@@ -1,0 +1,12 @@
+.git
+.venv
+instance
+.env
+.env.*
+!.env.example
+__pycache__
+.pytest_cache
+tests
+*.zip
+*.mp4
+*.log

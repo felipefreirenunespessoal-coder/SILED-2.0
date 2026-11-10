@@ -1,0 +1,14 @@
+{% extends 'base.html' %}{% from 'macros.html' import icon, csrf, flashes %}
+{% block title %}Acesso | {{ app_title }}{% endblock %}{% block body_class %}auth-page{% endblock %}
+{% block body %}
+<header class="institutional-header"><div class="institutional-copy"><span>Governo do Estado de Rondônia</span><h1>Sistema Integrado de Licitações, Empresas e Dados</h1><p>Portal institucional para acesso, acompanhamento e registro dos processos licitatórios estaduais.</p></div><div class="state-wordmark" aria-label="Rondônia Governo do Estado"><strong>RONDÔNIA</strong><div class="state-rule">★</div><span>Governo do Estado</span></div></header>
+<main class="auth-main" id="conteudo"><section class="login-card"><div class="card-accent"></div><h2>Acesso ao sistema</h2><p class="muted">Informe CPF, senha e unidade ou órgão para entrar no painel institucional.</p>{{ flashes() }}
+{% if has_users is defined and not has_users %}<div class="notice">O primeiro acesso ainda precisa ser configurado pelo responsável pelo sistema. Consulte o guia de instalação.</div>{% endif %}
+<form method="post">{{ csrf(csrf_token) }}
+<label for="cpf">CPF</label><input id="cpf" name="cpf" inputmode="numeric" autocomplete="username" placeholder="Somente números" maxlength="14" value="{{ cpf|default('') }}" required>
+<label for="password">Senha</label><input id="password" name="password" type="password" autocomplete="current-password" placeholder="Informe sua senha" maxlength="128" required>
+<label for="orgao">Unidade ou Órgão</label><select id="orgao" name="orgao">{% for orgao in orgaos %}<option value="{{ orgao }}">{{ orgao }}</option>{% endfor %}</select>
+<div class="login-actions"><button class="btn btn-primary" type="submit">ENTRAR</button><a href="{{ url_for('web.recover_password') }}">Recuperar senha</a></div>
+</form></section></main>
+<footer class="auth-footer">SILED Estratégico · Felipe Freire Nunes · Protótipo demonstrativo</footer>
+{% endblock %}

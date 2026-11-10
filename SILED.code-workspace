@@ -1,0 +1,15 @@
+{
+  "folders": [{"path": "."}],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+    "python.terminal.activateEnvironment": true
+  },
+  "extensions": {"recommendations": ["ms-python.python", "ms-python.debugpy"]},
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {"name": "SILED: Executar", "type": "debugpy", "request": "launch", "program": "${workspaceFolder}/main.py", "console": "integratedTerminal", "cwd": "${workspaceFolder}", "justMyCode": true},
+      {"name": "SILED: Executar e abrir navegador", "type": "debugpy", "request": "launch", "program": "${workspaceFolder}/main.py", "args": ["--open-browser"], "console": "integratedTerminal", "cwd": "${workspaceFolder}", "justMyCode": true}
+    ]
+  }
+}
